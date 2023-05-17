@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Araba;
+    [Header("------ARABA AYARLARI-----")]
+    public GameObject[] Arabalar;
+    public GameObject DurusNoktasi;
+    public int KacArabaOlsun;
+    int AktifAracIndex = 0;
 
     [Header("------PLATFORM AYARLARI")]
     public GameObject Platform_1;
@@ -14,14 +18,27 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        /*for (int i = 0; i < KacArabaOlsun; i++)
+        {
+        }*/
+
+    }
+
+    public void YeniArabaGetir()
+    {
+        DurusNoktasi.SetActive(true);
+        if (AktifAracIndex < KacArabaOlsun)
+        {
+            Arabalar[AktifAracIndex].SetActive(true);
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            Araba.GetComponent<Araba>().ilerle = true;
+            Arabalar[AktifAracIndex].GetComponent<Araba>().ilerle = true;
+            AktifAracIndex++;
         }
 
         Platform_1.transform.Rotate(new Vector3(0, 0, DonusHizlari[0]),Space.Self);
