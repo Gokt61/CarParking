@@ -43,7 +43,7 @@ public class Araba : MonoBehaviour
             Tekerizleri[1].SetActive(false);
             transform.SetParent(parent);
             _GameManager.YeniArabaGetir();
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }
         else if (collision.gameObject.CompareTag("OrtaGobek"))
         {
@@ -53,6 +53,7 @@ public class Araba : MonoBehaviour
         else if (collision.gameObject.CompareTag("Araba"))
         {
             Destroy(gameObject);
+            _GameManager.YeniArabaGetir();
         }
     }
 }
