@@ -11,6 +11,7 @@ TagManager:
   - DurusNoktasi
   - Elmas
   - tekrar
+  - On_Parking
   layers:
   - Default
   - TransparentFX

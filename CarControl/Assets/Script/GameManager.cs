@@ -24,15 +24,17 @@ public class GameManager : MonoBehaviour
     [Header("------PLATFORM AYARLARI")]
     public GameObject Platform_1;
     public GameObject Platform_2;
-
+    bool DonusVarmi;
     public float[] DonusHizlari;
 
     [Header("------LEVEL AYARLARI")]
     public int ElmasSayisi;
+    public ParticleSystem CarpmaEfekti;
 
 
     void Start()
     {
+        DonusVarmi = true;
         VarsayilanDegerleriKontrolEt();
 
         KalanAracSayisiDegeri = KacArabaOlsun;
@@ -83,13 +85,17 @@ public class GameManager : MonoBehaviour
             Panellerim[0].SetActive(false);
         }
 
-        Platform_1.transform.Rotate(new Vector3(0, 0, DonusHizlari[0]),Space.Self);
+        if (DonusVarmi)
+        {
+            Platform_1.transform.Rotate(new Vector3(0, 0, DonusHizlari[0]), Space.Self);
+        }
     }
 
     public void Kaybettin()
     {
         //PlayerPrefs.SetInt("Elmas", PlayerPrefs.GetInt("Elmas") + ElmasSayisi);
 
+        DonusVarmi = false;
         Textler[6].text = PlayerPrefs.GetInt("Elmas").ToString();
         Textler[7].text = SceneManager.GetActiveScene().name;
         Textler[8].text = (KacArabaOlsun - KalanAracSayisiDegeri).ToString();
