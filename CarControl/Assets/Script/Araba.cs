@@ -69,6 +69,7 @@ public class Araba : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             _GameManager.ElmasSayisi++;
+            _GameManager.Sesler[0].Play();
         }
         else if (other.CompareTag("OrtaGobek"))
         {
