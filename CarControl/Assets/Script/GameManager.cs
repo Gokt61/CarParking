@@ -39,13 +39,13 @@ public class GameManager : MonoBehaviour
         VarsayilanDegerleriKontrolEt();
 
         KalanAracSayisiDegeri = KacArabaOlsun;
-        /*
-        KalanAracSayisi.text = KalanAracSayisiDegeri.ToString();
+        
+        //KalanAracSayisi.text = KalanAracSayisiDegeri.ToString();
 
         for (int i = 0; i < KacArabaOlsun; i++)
         {
             ArabaCanvasGorselleri[i].SetActive(true);
-        }*/
+        }
     }
 
     public void YeniArabaGetir()
@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
             Kazandin();
         }
 
-        /*ArabaCanvasGorselleri[AktifAracIndex-1].GetComponent<Image>().sprite = AracGeldiGorseli;
-        KalanAracSayisi.text = KalanAracSayisiDegeri.ToString();
-        */
+        ArabaCanvasGorselleri[AktifAracIndex-1].GetComponent<Image>().sprite = AracGeldiGorseli;
+        //KalanAracSayisi.text = KalanAracSayisiDegeri.ToString();
+        
     }
 
     //public void YeniArabaGetirBasarisiz()
@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H) || Input.GetMouseButtonDown(0))
         {
             Panellerim[0].SetActive(false);
+            Panellerim[3].SetActive(true);
         }
 
         if (DonusVarmi)
@@ -104,17 +105,9 @@ public class GameManager : MonoBehaviour
         Sesler[1].Play();
         Sesler[3].Play();
         Panellerim[1].SetActive(true);
+        Panellerim[3].SetActive(false);
 
         Invoke("KaybettinButonuOrtayaCikart", 2f);
-    }
-
-    void KaybettinButonuOrtayaCikart()
-    {
-        TapToButonlar[0].SetActive(true);
-    }
-    void KazandinButonuOrtayaCikart()
-    {
-        TapToButonlar[1].SetActive(true);
     }
 
     public void Kazandin()
@@ -127,8 +120,18 @@ public class GameManager : MonoBehaviour
         Textler[5].text = ElmasSayisi.ToString();
         Sesler[2].Play();
         Panellerim[2].SetActive(true);
+        Panellerim[3].SetActive(false);
 
         Invoke("KazandinButonuOrtayaCikart", 2f);
+    }
+
+    void KaybettinButonuOrtayaCikart()
+    {
+        TapToButonlar[0].SetActive(true);
+    }
+    void KazandinButonuOrtayaCikart()
+    {
+        TapToButonlar[1].SetActive(true);
     }
 
     void VarsayilanDegerleriKontrolEt()
