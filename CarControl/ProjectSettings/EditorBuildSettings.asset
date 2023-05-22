@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/AnaMenu.unity
+    guid: 182aa16fdbbc3de42a0d661f14f1e6f7
+  - enabled: 1
     path: Assets/Scenes/1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/2.unity
+    guid: c6c004dd416bb3c428ebe7e278ff8027
   m_configObjects: {}
