@@ -49,12 +49,14 @@ public class Araba : MonoBehaviour
         else if (collision.gameObject.CompareTag("OrtaGobek"))
         {
             Destroy(gameObject);
-            _GameManager.YeniArabaGetir();
+            //_GameManager.YeniArabaGetir();
+            _GameManager.Kaybettin();
         }
         else if (collision.gameObject.CompareTag("Araba"))
         {
             Destroy(gameObject);
-            _GameManager.YeniArabaGetir();
+            //_GameManager.YeniArabaGetir();
+            _GameManager.Kaybettin();
         }
         else if (collision.gameObject.CompareTag("Elmas"))
         {
