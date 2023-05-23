@@ -6,6 +6,8 @@ public class Araba : MonoBehaviour
 {
     public bool ilerle;
     bool DurusNoktasiDurumu = false;
+    float YukselmeDeger;
+    bool PlatformYukselt;
 
     public GameObject[] Tekerizleri;
     public Transform parent;
@@ -27,6 +29,17 @@ public class Araba : MonoBehaviour
         {
             transform.Translate(15f * Time.deltaTime * transform.forward);
         }
+        if (PlatformYukselt)
+        {
+            if (YukselmeDeger > _GameManager.Platform_1.transform.position.y)
+            {
+                _GameManager.Platform_1.transform.position = Vector3.Lerp(_GameManager.Platform_1.transform.position, new Vector3(_GameManager.Platform_1.transform.position.x, _GameManager.Platform_1.transform.position.y + 1.3f, _GameManager.Platform_1.transform.position.z), 0.10f);
+            }
+            else
+            {
+                PlatformYukselt = false;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -35,8 +48,14 @@ public class Araba : MonoBehaviour
         {
             ArabaTeknikIslemi();
             transform.SetParent(parent);
-            
+
             //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+            if (_GameManager.YukselecekPlatformVarmi)
+            {
+                YukselmeDeger = _GameManager.Platform_1.transform.position.y + 1.3f;
+                PlatformYukselt = true;
+            }
 
             _GameManager.YeniArabaGetir();
         }
